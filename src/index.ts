@@ -20,7 +20,7 @@ async function buddypressRequest(
   method: string = 'GET',
   body?: any
 ): Promise<any> {
-  const url = `${BUDDYPRESS_URL}/wp-json/buddypress/v2${endpoint}`;
+  const url = `${BUDDYPRESS_URL}/wp-json/buddypress/v1${endpoint}`;
   const auth = Buffer.from(`${BUDDYPRESS_USERNAME}:${BUDDYPRESS_PASSWORD}`).toString('base64');
 
   const options: any = {
@@ -70,7 +70,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Activity ID', required: true },
+        id: { type: 'number', description: 'Activity ID' },
       },
       required: ['id'],
     },
@@ -81,7 +81,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        content: { type: 'string', description: 'Activity content', required: true },
+        content: { type: 'string', description: 'Activity content' },
         user_id: { type: 'number', description: 'User ID (default: current user)' },
         component: { type: 'string', description: 'Component (activity, groups, members, etc.)' },
         type: { type: 'string', description: 'Activity type (activity_update, activity_comment, etc.)' },
@@ -97,7 +97,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Activity ID', required: true },
+        id: { type: 'number', description: 'Activity ID' },
         content: { type: 'string', description: 'New activity content' },
       },
       required: ['id'],
@@ -109,7 +109,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Activity ID', required: true },
+        id: { type: 'number', description: 'Activity ID' },
       },
       required: ['id'],
     },
@@ -120,7 +120,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Activity ID', required: true },
+        id: { type: 'number', description: 'Activity ID' },
       },
       required: ['id'],
     },
@@ -148,7 +148,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'User ID', required: true },
+        id: { type: 'number', description: 'User ID' },
       },
       required: ['id'],
     },
@@ -159,7 +159,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'User ID', required: true },
+        id: { type: 'number', description: 'User ID' },
         name: { type: 'string', description: 'Display name' },
         description: { type: 'string', description: 'User biography' },
         member_type: { type: 'string', description: 'Member type' },
@@ -173,7 +173,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'User ID', required: true },
+        id: { type: 'number', description: 'User ID' },
         reassign: { type: 'number', description: 'User ID to reassign content to' },
       },
       required: ['id'],
@@ -202,7 +202,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Group ID', required: true },
+        id: { type: 'number', description: 'Group ID' },
       },
       required: ['id'],
     },
@@ -213,7 +213,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        name: { type: 'string', description: 'Group name', required: true },
+        name: { type: 'string', description: 'Group name' },
         description: { type: 'string', description: 'Group description' },
         status: { type: 'string', description: 'Group status (public, private, hidden)' },
         enable_forum: { type: 'boolean', description: 'Enable group forum' },
@@ -228,7 +228,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Group ID', required: true },
+        id: { type: 'number', description: 'Group ID' },
         name: { type: 'string', description: 'Group name' },
         description: { type: 'string', description: 'Group description' },
         status: { type: 'string', description: 'Group status (public, private, hidden)' },
@@ -242,7 +242,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Group ID', required: true },
+        id: { type: 'number', description: 'Group ID' },
       },
       required: ['id'],
     },
@@ -255,7 +255,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        group_id: { type: 'number', description: 'Group ID', required: true },
+        group_id: { type: 'number', description: 'Group ID' },
         page: { type: 'number', description: 'Page number (default: 1)' },
         per_page: { type: 'number', description: 'Items per page (default: 20)' },
         roles: { type: 'string', description: 'Filter by roles (admin, mod, member, banned)' },
@@ -269,8 +269,8 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        group_id: { type: 'number', description: 'Group ID', required: true },
-        user_id: { type: 'number', description: 'User ID', required: true },
+        group_id: { type: 'number', description: 'Group ID' },
+        user_id: { type: 'number', description: 'User ID' },
         role: { type: 'string', description: 'Member role (member, mod, admin)' },
       },
       required: ['group_id', 'user_id'],
@@ -282,8 +282,8 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        group_id: { type: 'number', description: 'Group ID', required: true },
-        user_id: { type: 'number', description: 'User ID', required: true },
+        group_id: { type: 'number', description: 'Group ID' },
+        user_id: { type: 'number', description: 'User ID' },
       },
       required: ['group_id', 'user_id'],
     },
@@ -306,7 +306,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Field group ID', required: true },
+        id: { type: 'number', description: 'Field group ID' },
         fetch_fields: { type: 'boolean', description: 'Include fields in response' },
       },
       required: ['id'],
@@ -329,7 +329,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Field ID', required: true },
+        id: { type: 'number', description: 'Field ID' },
         fetch_field_data: { type: 'boolean', description: 'Include field data' },
       },
       required: ['id'],
@@ -341,8 +341,8 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        field_id: { type: 'number', description: 'Field ID', required: true },
-        user_id: { type: 'number', description: 'User ID', required: true },
+        field_id: { type: 'number', description: 'Field ID' },
+        user_id: { type: 'number', description: 'User ID' },
       },
       required: ['field_id', 'user_id'],
     },
@@ -353,9 +353,9 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        field_id: { type: 'number', description: 'Field ID', required: true },
-        user_id: { type: 'number', description: 'User ID', required: true },
-        value: { type: 'string', description: 'Field value', required: true },
+        field_id: { type: 'number', description: 'Field ID' },
+        user_id: { type: 'number', description: 'User ID' },
+        value: { type: 'string', description: 'Field value' },
       },
       required: ['field_id', 'user_id', 'value'],
     },
@@ -381,8 +381,8 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        initiator_id: { type: 'number', description: 'Initiator user ID', required: true },
-        friend_id: { type: 'number', description: 'Friend user ID', required: true },
+        initiator_id: { type: 'number', description: 'Initiator user ID' },
+        friend_id: { type: 'number', description: 'Friend user ID' },
       },
       required: ['initiator_id', 'friend_id'],
     },
@@ -393,7 +393,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Friendship ID', required: true },
+        id: { type: 'number', description: 'Friendship ID' },
       },
       required: ['id'],
     },
@@ -420,7 +420,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Thread ID', required: true },
+        id: { type: 'number', description: 'Thread ID' },
       },
       required: ['id'],
     },
@@ -432,9 +432,9 @@ const tools: Tool[] = [
       type: 'object',
       properties: {
         sender_id: { type: 'number', description: 'Sender user ID (default: current user)' },
-        recipients: { type: 'array', items: { type: 'number' }, description: 'Array of recipient user IDs', required: true },
-        subject: { type: 'string', description: 'Message subject', required: true },
-        message: { type: 'string', description: 'Message content', required: true },
+        recipients: { type: 'array', items: { type: 'number' }, description: 'Array of recipient user IDs' },
+        subject: { type: 'string', description: 'Message subject' },
+        message: { type: 'string', description: 'Message content' },
       },
       required: ['recipients', 'subject', 'message'],
     },
@@ -445,7 +445,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Thread ID', required: true },
+        id: { type: 'number', description: 'Thread ID' },
       },
       required: ['id'],
     },
@@ -471,7 +471,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Notification ID', required: true },
+        id: { type: 'number', description: 'Notification ID' },
       },
       required: ['id'],
     },
@@ -482,7 +482,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Notification ID', required: true },
+        id: { type: 'number', description: 'Notification ID' },
         is_new: { type: 'boolean', description: 'Mark as unread (true) or read (false)' },
       },
       required: ['id'],
@@ -494,7 +494,7 @@ const tools: Tool[] = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'number', description: 'Notification ID', required: true },
+        id: { type: 'number', description: 'Notification ID' },
       },
       required: ['id'],
     },
